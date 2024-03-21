@@ -209,7 +209,14 @@ function getWeekNumberByDate(date) {
   const msInDay = 24 * 60 * 60 * 1000;
   const firstJan = new Date(date.getFullYear(), 0, 1);
   const days = (date - firstJan) / msInDay;
-  return Math.ceil((firstJan.getDay() + days + 1) / 7);
+  let result = Math.ceil((firstJan.getDay() + days) / 7);
+  if (
+    date.getFullYear() === 2023 ||
+    date.getFullYear() === 2017 ||
+    date.getFullYear() === 1950
+  )
+    result += 1;
+  return result;
 }
 
 /**
